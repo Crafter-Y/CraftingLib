@@ -1,10 +1,6 @@
 pluginManagement {
     includeBuild('build-logic')
 }
-rootProject.name = 'Paradubsch'
+rootProject.name = 'CraftingLib'
 
-
-include ":paradubschmanager"
 include ":craftinglib"
-include ":easterevent"
-include ":quizevent"
