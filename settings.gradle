@@ -4,3 +4,4 @@ pluginManagement {
 rootProject.name = 'CraftingLib'
 
 include ":craftinglib"
+include ":craftinghomes"

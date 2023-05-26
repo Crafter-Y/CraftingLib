@@ -17,7 +17,8 @@ public class MessageAdapter {
 
     public static Language getSenderLang(CommandSender sender) {
         Language language;
-        if (sender instanceof Player player) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
             PlayerData playerData = PlayerData.getByPlayer(player);
             language = Language.getLanguageByShortName(playerData.getLanguage());
         } else {

@@ -46,14 +46,14 @@ public class CraftingLib extends JavaPlugin implements Listener {
         ConfigurationManager.copyDefaultConfiguration();
         cachingManager = new CachingManager();
         languageManager = new LanguageManager();
-        new GuiManager();
+        //new GuiManager();
 
         languageManager.registerMessageEnum(InternalMessages.class);
 
-        new TestDatabaseConnection();
+        /*new TestDatabaseConnection();
         HibernateConfigurator.addEntity(PlayerData.class);
         HibernateConfigurator.addEntity(Collectable.class);
-        HibernateConfigurator.addEntity(CollectedCollectable.class);
+        HibernateConfigurator.addEntity(CollectedCollectable.class);*/
         super.onEnable();
     }
 
@@ -65,7 +65,7 @@ public class CraftingLib extends JavaPlugin implements Listener {
         cachingManager = null;
         languageManager = null;
 
-        HibernateConfigurator.shutdown();
+        //HibernateConfigurator.shutdown();
 
         System.gc();
         super.onDisable();
@@ -75,10 +75,10 @@ public class CraftingLib extends JavaPlugin implements Listener {
         registeredCollectableTypes.add(type);
     }
 
-    @EventHandler
+    /*@EventHandler
     public void onDatabaseLoad(DatabaseLoadEvent e) {
         headDatabase = new HeadDatabaseAPI();
-    }
+    }*/
 
     // Constructors for testing
     public CraftingLib() {

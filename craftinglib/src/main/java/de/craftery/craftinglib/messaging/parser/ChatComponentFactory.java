@@ -271,24 +271,24 @@ public class ChatComponentFactory {
     }
 
     public static TextColor fromColorCode(String colorCode) {
-        return switch (colorCode) {
-            case "&0" -> TextColor.color(0, 0, 0);
-            case "&1" -> TextColor.color(0, 0, 170);
-            case "&2" -> TextColor.color(0, 170, 0);
-            case "&3" -> TextColor.color(0, 170, 170);
-            case "&4" -> TextColor.color(170, 0, 0);
-            case "&5" -> TextColor.color(170, 0, 170);
-            case "&6" -> TextColor.color(255, 170, 0);
-            case "&8" -> TextColor.color(85, 85, 85);
-            case "&9" -> TextColor.color(85, 85, 255);
-            case "&a" -> TextColor.color(85, 255, 85);
-            case "&b" -> TextColor.color(85, 255, 255);
-            case "&c" -> TextColor.color(255, 85, 85);
-            case "&d" -> TextColor.color(255, 85, 255);
-            case "&e" -> TextColor.color(255, 255, 85);
-            case "&f" -> TextColor.color(255, 255, 255);
-            default -> TextColor.color(170, 170, 170);
-        };
+        switch (colorCode) {
+            case "&0": return TextColor.color(0, 0, 0);
+            case "&1": return TextColor.color(0, 0, 170);
+            case "&2": return TextColor.color(0, 170, 0);
+            case "&3": return TextColor.color(0, 170, 170);
+            case "&4": return TextColor.color(170, 0, 0);
+            case "&5": return TextColor.color(170, 0, 170);
+            case "&6": return TextColor.color(255, 170, 0);
+            case "&8": return TextColor.color(85, 85, 85);
+            case "&9": return TextColor.color(85, 85, 255);
+            case "&a": return TextColor.color(85, 255, 85);
+            case "&b": return TextColor.color(85, 255, 255);
+            case "&c": return TextColor.color(255, 85, 85);
+            case "&d": return TextColor.color(255, 85, 255);
+            case "&e": return TextColor.color(255, 255, 85);
+            case "&f": return TextColor.color(255, 255, 255);
+            default: return TextColor.color(170, 170, 170);
+        }
     }
 
     private static List<Token> lexMessage(String message) {
@@ -317,19 +317,21 @@ public class ChatComponentFactory {
 
         for (Token token : tokens) {
             switch (token.getType()) {
-                case TEXT -> {
+                case TEXT: {
                     if (component == null) {
                         component = fromLegacy(token.getContent());
                     } else {
                         component = component.append(fromLegacy(token.getContent()));
                     }
+                    break;
                 }
-                case COMPONENT -> {
+                case COMPONENT: {
                     if (component == null) {
                         component = specialComponent(token.getContent());
                     } else {
                         component = component.append(specialComponent(token.getContent()));
                     }
+                    break;
                 }
             }
         }

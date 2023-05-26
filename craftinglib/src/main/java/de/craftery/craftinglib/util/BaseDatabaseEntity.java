@@ -123,14 +123,14 @@ public abstract class BaseDatabaseEntity<P extends BaseDatabaseEntity<?, ?>, ID 
         if (!flushingScheduled) {
             flushingScheduled = true;
 
-            var clazz = this.getClass();
+            Class<? extends BaseDatabaseEntity> clazz = this.getClass();
             new BukkitRunnable() {
                 @Override
                 public void run() {
                     flushTimeout--;
                     if (flushTimeout <= 0) {
                         flushingScheduled = false;
-                        var obj = CraftingLib.getInstance().getCachingManager().getEntity(clazz, getIdentifyingColumn());
+                        BaseDatabaseEntity obj = CraftingLib.getInstance().getCachingManager().getEntity(clazz, getIdentifyingColumn());
                         obj.saveOrUpdate();
                         cancel();
                     }
