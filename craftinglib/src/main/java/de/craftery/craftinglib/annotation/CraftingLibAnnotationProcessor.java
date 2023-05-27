@@ -24,6 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+// https://hub.spigotmc.org/stash/projects/SPIGOT/repos/plugin-annotations/browse
 @SupportedAnnotationTypes("de.craftery.craftinglib.annotation.annotations.*")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class CraftingLibAnnotationProcessor extends AbstractProcessor {
@@ -71,11 +72,11 @@ public class CraftingLibAnnotationProcessor extends AbstractProcessor {
             Yaml yaml = new Yaml();
             FileObject file = this.processingEnv.getFiler().createResource(StandardLocation.CLASS_OUTPUT, "", "plugin.yml");
             try (Writer w = file.openWriter()) {
-                w.append( "# Auto-generated plugin.yml, generated at " )
-                        .append( LocalDateTime.now().format( dFormat ) )
-                        .append( " by " )
-                        .append( this.getClass().getName() )
-                        .append( "\n\n" );
+                w.append("# Auto-generated plugin.yml, generated at ")
+                        .append(LocalDateTime.now().format(dFormat))
+                        .append(" by ")
+                        .append(this.getClass().getName())
+                        .append("\n\n");
                 String raw = yaml.dumpAs(yml, Tag.MAP, DumperOptions.FlowStyle.BLOCK);
                 w.write(raw);
                 w.flush();

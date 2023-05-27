@@ -24,6 +24,7 @@ tasks {
     shadowJar {
         archiveClassifier.set(null)
         exclude("META-INF/**")
+        destinationDir = file("$rootDir/build")
     }
 
     build {
