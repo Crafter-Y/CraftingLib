@@ -4,9 +4,10 @@ plugins {
 
 repositories {
     gradlePluginPortal()
+    mavenCentral()
 }
 
 dependencies {
-    //implementation 'com.github.johnrengelman:shadow:7.1.2'
     implementation "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
+    implementation 'org.yaml:snakeyaml:2.0'
 }

@@ -5,3 +5,5 @@ rootProject.name = 'CraftingLib'
 
 include ":craftinglib"
 include ":craftinghomes"
+include ":craftinglib:common"
+include ":craftinglib:bukkit"

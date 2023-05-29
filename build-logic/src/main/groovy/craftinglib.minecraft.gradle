@@ -1,19 +1,22 @@
 plugins {
-    id "craftinglib.core"
+    id "craftinglib.base"
+    id 'com.github.johnrengelman.shadow'
 }
 
 dependencies {
     compileOnly project(":craftinglib")
+    compileOnly project(":craftinglib:common")
     annotationProcessor project(":craftinglib")
 }
 
 tasks {
-    processResources {
-        def props = [version: version]
-        inputs.properties props
-        filteringCharset 'UTF-8'
-        filesMatching('plugin.yml') {
-            expand props
-        }
+    shadowJar {
+        finalizedBy("bukkitJar")
     }
+}
+
+tasks.register('bukkitJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveClassifier.set("bukkit")
+    destinationDir = file("$rootDir/build")
+    from sourceSets.main.output
 }

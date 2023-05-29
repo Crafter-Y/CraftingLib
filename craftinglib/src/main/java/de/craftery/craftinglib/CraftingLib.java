@@ -23,7 +23,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CraftingLib extends JavaPlugin implements Listener {
+public class CraftingLib extends JavaPlugin {
     @Getter
     private static CraftingLib instance;
 
@@ -42,7 +42,6 @@ public class CraftingLib extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
-        getServer().getPluginManager().registerEvents(this, this);
         ConfigurationManager.copyDefaultConfiguration();
         cachingManager = new CachingManager();
         languageManager = new LanguageManager();
